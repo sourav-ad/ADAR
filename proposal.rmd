@@ -1,5 +1,7 @@
 ---
-title: "proposal"
+title: "Project Proposal"
+author: "Verena Köck and Sourav Adhikari"
+date: "07.03.2022"
 output: pdf_document
 ---
 
@@ -7,22 +9,30 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown file
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Basic idea behind the project
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+In this project we give an overview of different machine learning techniques and, subsequently, apply these methods on data. Hereby we will first distinguish between classification and regression problems, and choose some of the corresponding methods out of the following list: 
 
-```{r cars}
-summary(cars)
-```
+* \textbf{Classification:} Naive Bayes, SVM, Nearest Neighbor, Discriminant Analysis, etc. 
+* \textbf{Regression:} GPR/SVR, Decision Trees, Neural Networks, etc. 
+* \textbf{Both:} Random forest, Gradient boosting, etc. 
 
-## Including Plots
 
-You can also embed plots, for example:
+## Research Question
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+The goal is to give on the one hand a easily comprehensible guide (without too many technical details) about the possibilities of machine learning and on the other hand to provide a collection of code allowing to apply the methods directly (available on Github). Moreover we will demonstrate the methods on different data sets and compare the performance using different performance measures (e.g. MSE, MAPLE).    
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Information on the data
+
+As for this project the specific choice of data is not central we will either use build-in R-data sets or download data from easily accessible data repositories. In particular we require the data to be suitable for the individual methods discussed.  
+
+
+## Preliminary outline of the presentation
+
+
+* \textbf{Introduction} 
+* \textbf{Models:} In this section we introduce the classification/regression models in very hands-on manner. 
+* \textbf{Applications:} For each of the problems we first introduce the data set used and then present results applying (some of) the previous introduced methods. For each application we will try to give a "conclusion" which methods works best (in terms of performance measures or visualization). The number of methods and applications discussed will depend on the time restriction of the presentation. 
+
