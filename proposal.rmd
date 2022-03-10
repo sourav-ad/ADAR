@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Overview
 
-This project aims at provifing an overview of different methods and, subsequently, their application on a dataset. We perform regression and classification based tasks on a selected dataset usign the following methods: 
+This project aims at providing an overview of different methods and, subsequently, their application on a dataset. We perform regression and classification based tasks on a selected dataset using the following methods: 
 
 * \textbf{Classification:} Naive Bayes, Support Vector Machine, Nearest Neighbor, Discriminant Analysis. 
 * \textbf{Regression:} GPR/SVR, Decision Trees, elementary Neural Networks. 
@@ -21,18 +21,18 @@ This project aims at provifing an overview of different methods and, subsequentl
 
 ## Aim
 
-The goal is to give on the one hand a easily comprehensible guide (without too many technical details) about the possibilities of machine learning and on the other hand to provide a collection of code allowing to apply the methods directly (available on Github). Moreover we will demonstrate the methods on different data sets and compare the performance using different performance measures (e.g. MSE, MAPLE).    
+The goal is to provide an easily comprehensible guide about the possibilities of the methods mentioned and to provide accessible R code to implement the methods (available on Github). Further, we will demonstrate the methods on different datasets and compare the performance using several evaluation measures (e.g. MSE, MAPE, etc.).    
 
 
-## Information on the data
+## Data
 
-As for this project the specific choice of data is not central we will either use build-in R-data sets or download data from easily accessible data repositories. In particular we require the data to be suitable for the individual methods discussed.  
-
-
-## Preliminary outline of the presentation
+For this project a specific choice of data is not as crucial and we will either use in-built R-datasets or get data from easily accessible open data repositories. In particular we require the datasets to be appropriate for the methods to be discussed.  
 
 
-* \textbf{Introduction} 
-* \textbf{Models:} In this section we introduce the classification/regression models in very hands-on manner. 
-* \textbf{Applications:} For each of the problems we first introduce the data set used and then present results applying (some of) the previous introduced methods. For each application we will try to give a "conclusion" which methods works best (in terms of performance measures or visualization). The number of methods and applications discussed will depend on the time restriction of the presentation. 
+## Outline of the Presentation
+
+
+* A brief introduction. 
+* \textbf{Models:} Introduce the classification/regression models in an easy, hands-on manner. 
+* \textbf{Applications:} For each problem introduce the dataset used and then present results applying all or some of the introduced methods. For each application we provide a suggestion regarding the most appropriate method (quantified in terms of performance measures or suitable visualization). The methods and applications discussed shall depend on the time limit of the presentation. 
 
