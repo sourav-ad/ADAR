@@ -1,7 +1,7 @@
 ---
-title: "Project Proposal"
-author: "Verena Köck and Sourav Adhikari"
-date: "07.03.2022"
+title: "Project Proposal : Advanced Data Analysis in R"
+author: "Verena Köck, Sourav Adhikari"
+date: "10.03.2022"
 output: pdf_document
 ---
 
@@ -10,16 +10,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-## Basic idea behind the project
+## Overview
 
-In this project we give an overview of different machine learning techniques and, subsequently, apply these methods on data. Hereby we will first distinguish between classification and regression problems, and choose some of the corresponding methods out of the following list: 
+This project aims at provifing an overview of different methods and, subsequently, their application on a dataset. We perform regression and classification based tasks on a selected dataset usign the following methods: 
 
-* \textbf{Classification:} Naive Bayes, SVM, Nearest Neighbor, Discriminant Analysis, etc. 
-* \textbf{Regression:} GPR/SVR, Decision Trees, Neural Networks, etc. 
-* \textbf{Both:} Random forest, Gradient boosting, etc. 
+* \textbf{Classification:} Naive Bayes, Support Vector Machine, Nearest Neighbor, Discriminant Analysis. 
+* \textbf{Regression:} GPR/SVR, Decision Trees, elementary Neural Networks. 
+* \textbf{Misc:} Random forest, Gradient boosting. 
 
 
-## Research Question
+## Aim
 
 The goal is to give on the one hand a easily comprehensible guide (without too many technical details) about the possibilities of machine learning and on the other hand to provide a collection of code allowing to apply the methods directly (available on Github). Moreover we will demonstrate the methods on different data sets and compare the performance using different performance measures (e.g. MSE, MAPLE).    
 
