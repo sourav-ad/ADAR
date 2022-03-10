@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Overview
 
-This project aims at providing an overview of different methods and, subsequently, their application on a dataset. We perform regression and classification based tasks on a selected dataset using the following methods: 
+This project aims at providing an overview of different methods and, subsequently, their application on a dataset. We perform regression and classification based tasks on a selected dataset using a subset of the following methods: 
 
 * \textbf{Classification:} Naive Bayes, Support Vector Machine, Nearest Neighbor, Discriminant Analysis. 
 * \textbf{Regression:} GPR/SVR, Decision Trees, elementary Neural Networks. 
