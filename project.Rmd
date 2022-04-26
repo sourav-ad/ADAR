@@ -1,0 +1,448 @@
+---
+title: "Classification Problem"
+author: "Verena"
+date: "31 3 2022"
+output: pdf_document
+---
+
+```{r setup }
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# The IRIS dataset 
+
+The iris dataset is a built-in dataset in R that contains measurements on 4 different attributes (in centimeters) for 50 flowers from 3 different species.
+
+https://www.kaggle.com/code/vinayshaw/iris-species-100-accuracy-using-naive-bayes/notebook
+
+```{r dataset_1}
+
+data(iris)
+names(iris)
+head(iris)
+dim(iris)
+summary(iris)
+pairs(iris[1:4],main="Iris Data(red=setosa,green=versicolor,blue=virginica)", pch=21,bg=c("red","green","blue")[unclass(iris$Species)])
+
+```
+
+```{r dataset_2 }
+# Determine sample size
+set.seed(3)
+ind <- sample(2, nrow(iris), replace=TRUE, prob=c(0.67, 0.33))
+
+# Split the `iris` data
+iris.training <- iris[ind==1, 1:4]
+iris.test <- iris[ind==2, 1:4]
+
+# Split the class attribute
+iris.trainingtarget <- iris[ind==1, 5]
+iris.testtarget <- iris[ind==2, 5]
+
+make.grid<-function(x,n=200){
+  grange=apply(x,2,range)
+  x1=seq(from=grange[1,1],to=grange[2,1],length=n)
+  x2=seq(from=grange[1,2],to=grange[2,2],length=n)
+  expand.grid(X1=x1,X2=x2)
+}
+
+xtrain<-iris.training[,3:4]
+xtest<-iris.test[,3:4]
+ytest<-iris.testtarget
+ytrain<-iris.trainingtarget
+xgrid = make.grid(xtest, n = 150)
+colnames(xgrid)<-c("Petal.Length", "Petal.Width")
+
+plot(xtrain[,1],xtrain[,2],col=c("darkred","forestgreen","darkblue")[unclass(ytrain)],pch=16,xlab="Petal.Length", ylab= "Petal.Width")   
+points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
+
+
+```
+
+# Naive Bayes Estimation
+
+```{r nb_1}
+library("e1071")
+model_nb<-naiveBayes(iris.training, iris.trainingtarget)
+table(predict(model_nb, iris.test), iris.testtarget,  dnn=list('predicted','actual'))
+model_nb$apriori
+model_nb
+model_nb$tables$Petal.Length
+
+score_nb<-mean(predict(model_nb, iris.test)== iris.testtarget)
+score_nb
+
+plot(function(x) dnorm(x, 1.462, 0.1736640), 0, 8,  col="red",xlab="Petal length", ylab="density", main="Petal length distribution for the 3 different species")
+curve(dnorm(x, 4.260, 0.4699110), add=TRUE, col="blue")
+curve(dnorm(x, 5.552, 0.5518947), add=TRUE, col="green")
+
+
+
+
+#Illustration
+model_nb<-naiveBayes(xtrain, ytrain)
+nb_x <- predict(model_nb,newdata=list("Petal.Length"=xgrid[,1], "Petal.Width"= xgrid[,2]))
+plot(xgrid,col=c(2,3,4)[as.numeric(nb_x)],pch = 20,cex = .2, main = "Naive Bayes",xlab="Petal Length",ylab="Petal Width")
+points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
+
+```
+
+
+# K-Nearest-Neighbors estimation
+
+```{r knn_1}
+library(FNN) #knn regression
+
+#First Attempt to Determine Right K####
+iris_acc<-numeric() #Holding variable
+
+for(i in 1:50){
+  #Apply knn with k = i
+  predict<-knn(iris.training,iris.test,
+               iris.trainingtarget,k=i)
+  iris_acc<-c(iris_acc,
+              mean(predict==iris.testtarget))
+}
+#Plot k= 1 through 30
+plot(iris_acc,type="l",ylab="Error Rate",
+     xlab="K",main="kNN Score for Iris With Varying K")
+
+
+
+#Illustration
+
+
+
+
+k<-20
+knn_x <- knn(train=xtrain,  test=xgrid , cl=factor(ytrain), k=i) 
+plot(xgrid,col=c(2,3,4)[as.numeric(knn_x)],pch = 20,cex = .2, main = paste("KNN =", k),xlab="Petal Length",ylab="Petal Width")
+points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
+
+
+```
+
+# Logistic Regression
+
+```{r logit_1}
+library(nnet)
+fit <- multinom(iris.trainingtarget ~  ., data=cbind(iris.training,iris.trainingtarget))
+summary(fit)
+
+predicted.classes <-  predict(fit,iris.test)
+head(predicted.classes)
+# Model accuracy
+scorelog<-mean(predicted.classes == iris.testtarget)
+
+
+log_model <- multinom(ytrain ~ ., data=cbind(xtrain)) 
+log_x <- predict(log_model,newdata=xgrid)
+plot(xgrid,col=c(2,3,4)[as.numeric(log_x)],pch = 20,cex = .2, main = "Logistic Regression",xlab="Petal Length",ylab="Petal Width")
+points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
+
+
+```
+
+
+
+
+
+# Support Vector Machine
+
+
+
+
+```{r SVM_1}
+library("e1071")
+
+svm_model <- svm(iris.trainingtarget ~  ., data=cbind(iris.training,iris.trainingtarget), kernel="linear") #linear/polynomial/sigmoid/radial 
+#plot(svm_model, data=cbind(iris.training,iris.trainingtarget),Petal.Width~Petal.Length, slice = list(Sepal.Width=3, Sepal.Length=4) )
+pred = predict(svm_model,iris.test)
+tab<-table(iris.testtarget,pred)
+score_svm<-sum(diag(tab)/sum(tab))
+score_svm
+
+
+#Illustration
+svm_model <- svm(ytrain ~ ., data=cbind(xtrain),   kernel="linear") 
+svm_x <- predict(svm_model,newdata=cbind(xgrid[,1],xgrid[,2]))
+plot(xgrid,col=c(2,3,4)[as.numeric(svm_x)],pch = 20,cex = .2, main = "SVM",xlab="Petal Length",ylab="Petal Width")
+points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
+
+```
+
+# Neural Network 
+
+
+```{r nnw_1, eval = FALSE }
+library(neuralnet)
+
+
+iris$setosa <- iris$Species=="setosa"
+iris$virginica <- iris$Species == "virginica"
+iris$versicolor <- iris$Species == "versicolor"
+iris.training_nn <- iris[ind==1,]
+iris.test_nn <- iris[(ind==2),]
+
+
+
+library(neuralnet)
+iris.net <- neuralnet(setosa+versicolor+virginica ~ 
+                        Sepal.Length + Sepal.Width + Petal.Length + Petal.Width, 
+                      data=iris.training_nn, hidden=c(10,10), rep = 5, err.fct = "ce", act.fct = "logistic",
+                      linear.output = F, lifesign = "minimal", stepmax = 1000000,
+                      threshold = 0.01)
+
+
+#plot(iris.net, rep="best")
+
+iris.prediction <- compute(iris.net, iris.test_nn)
+idx <- apply(iris.prediction$net.result, 1, which.max)
+predicted <- c('setosa', 'versicolor', 'virginica')[idx]
+tab<-table(predicted, iris.test_nn$Species)
+
+score_net<-sum(diag(tab)/sum(tab))
+score_net
+
+
+#Illustration
+library(neuralnet)
+iris.net <- neuralnet(setosa+versicolor+virginica ~ Petal.Length + Petal.Width, 
+                      data=iris.training_nn, hidden=c(10,10), rep = 5, err.fct = "ce", act.fct = "logistic",
+                      linear.output = F, lifesign = "minimal", stepmax = 1000000,
+                      threshold = 0.01)
+
+iris.prediction <- compute(iris.net, cbind(xgrid[,1],xgrid[,2]))
+idx <- apply(iris.prediction$net.result, 1, which.max)
+predicted_x <- c(1,2, 3)[idx]
+
+#plot(xgrid,col=c(2,3,4)[as.numeric(predicted_x)],pch = 20,cex = .2, main = "Neural Network",xlab="Petal Length",ylab="Petal Width")
+#points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
+
+plot(xgrid,col=c(2,3,4)[as.numeric(predicted_x)],pch = 20,cex = .2, main = "Neural Network",xlab="Petal Length",ylab="Petal Width")
+
+#points(xtrain[,1],xtrain[,2],col=c("darkred","forestgreen","darkblue")[unclass(ytrain)],pch=".",cex=5)   
+points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
+
+
+```
+
+```{r nnw_2 }
+library(keras)
+library(tensorflow)
+library(datasets)
+
+data(iris)
+
+#iris[,5] <- as.numeric(iris[,5]) -1
+#iris <- as.matrix(iris)
+#dimnames(iris) <- NULL
+
+
+# Split the `iris` data
+
+#iris.training <- iris[ind==1, 1:4]
+#iris.test <- iris[ind==2, 1:4]
+
+# Split the class attribute
+
+iris.training_keras <- as.matrix(iris.training)
+iris.test_keras <-as.matrix(iris.test)
+
+iris.trainingtarget_keras <- as.numeric(iris.trainingtarget)-1
+iris.testtarget_keras <- as.numeric(iris.testtarget) -1
+iris.trainLabels <- to_categorical(iris.trainingtarget_keras)
+iris.testLabels <- to_categorical(iris.testtarget_keras)
+
+
+# Initialize a sequential model
+model3 <- keras_model_sequential() 
+
+# Add layers to the model
+model3 %>% 
+  layer_dense(units = 20, activation = 'relu', input_shape = c(4)) %>% 
+  layer_dense(units = 10, activation = 'relu') %>% 
+  layer_dense(units = 3, activation = 'softmax')
+
+# Compile the model
+model3 %>% compile(
+  loss = 'categorical_crossentropy',
+  optimizer = 'adam',
+  metrics = 'accuracy'
+)
+
+x = as.matrix(apply(iris.training_keras, 2, function(x) (x-min(x))/(max(x) - min(x))))
+
+
+# Fit the model to the data
+fit=model3 %>% fit(
+  iris.training_keras, iris.trainLabels,
+  epochs = 200, batch_size = 5,
+  validation_split = 0.2
+)
+
+plot(fit)
+
+# Evaluate the model
+score <- model3 %>% evaluate(iris.test_keras, iris.testLabels, batch_size = 128 )
+
+# Print the score
+score_keras<-score$acc
+print(score_keras)
+```
+
+```{r nnw_3 }
+library(keras)
+library(tensorflow)
+library(datasets)
+#Illustration
+# Initialize a sequential model
+model4 <- keras_model_sequential() 
+
+# Add layers to the model
+model4 %>% 
+  layer_dense(units = 20, activation = 'relu', input_shape = c(2)) %>% 
+  layer_dense(units = 10, activation = 'relu') %>% 
+  layer_dense(units = 3, activation = 'softmax')
+
+# Compile the model
+model4 %>% compile(
+  loss = 'categorical_crossentropy',
+  optimizer = 'adam',
+  metrics = 'accuracy'
+)
+
+
+# Fit the model to the data
+fit=model4 %>% fit(
+  as.matrix(xtrain), iris.trainLabels, 
+  epochs = 200, batch_size = 5, 
+  validation_split = 0.2
+)
+
+plot(fit)
+
+# Evaluate the model
+score4<- model4 %>% evaluate(as.matrix(xtest), iris.testLabels, batch_size = 128)
+
+
+
+
+iris.prediction <- predict(model4,as.matrix(xgrid))
+idx <- apply(iris.prediction, 1, which.max)
+predicted_x <- c(1,2, 3)[idx]
+
+plot(xgrid,col=c(2,3,4)[as.numeric(predicted_x)],pch = 20,cex = .2, main = "Neural Network",xlab="Petal Length",ylab="Petal Width")
+points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
+
+#plot(xgrid,col=c(2,3,4)[as.numeric(predicted_x)],pch = 20,cex = .2, main = "Neural Network",xlab="Petal Length",ylab="Petal Width")
+
+#points(xtrain[,1],xtrain[,2],col=c("darkred","forestgreen","darkblue")[unclass(ytrain)],pch=".",cex=5)   
+#points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
+
+
+# Print the score
+print(score4)
+
+```
+
+# Decision Trees
+```{r decisiontree0, include=FALSE}
+library(rpart.plot)
+library(caret)
+dtree_fit_info <- train(iris.trainingtarget ~ ., data=cbind(iris.training,iris.trainingtarget), method = "rpart",
+                    parms = list(split = "information"),
+                   tuneLength = 10)
+
+
+
+prp(dtree_fit_info$finalModel, box.palette="Reds", tweak=1.2)
+
+test_pred_info<-predict(dtree_fit_info,newdata = iris.test)
+con_mat<-confusionMatrix(test_pred_info, iris.testtarget)
+score_dt_info<-sum(diag(con_mat$table))/(sum(con_mat$table))
+```
+
+```{r decisiontree1}
+library(rpart.plot)
+library(caret)
+
+
+dtree_fit_gini <- train(iris.trainingtarget ~ ., data=cbind(iris.training,iris.trainingtarget), method = "rpart",
+                    parms = list(split = "gini"),
+                   tuneLength = 10)
+prp(dtree_fit_gini$finalModel,box.palette = "Blues", tweak = 1.2)
+test_pred_gini<-predict(dtree_fit_gini,newdata = as.matrix(iris.test))
+con_mat<-confusionMatrix(test_pred_gini, iris.testtarget)
+score_dt_gini<-sum(diag(con_mat$table))/(sum(con_mat$table))
+score_dt_gini
+
+```
+
+```{r decisiontree2}
+
+predicted_x<-predict(dtree_fit_info,newdata = list("Sepal.Length"=xgrid[,1], "Sepal.Width"=xgrid[,2],  "Petal.Length"=xgrid[,1], "Petal.Width"=xgrid[,2] ))
+
+plot(xgrid,col=c(2,3,4)[as.numeric(predicted_x)],pch = 20,cex = .2, main = "Neural Network",xlab="Petal Length",ylab="Petal Width")
+
+#points(xtrain[,1],xtrain[,2],col=c("darkred","forestgreen","darkblue")[unclass(ytrain)],pch=".",cex=5)   
+points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
+
+```
+# Random Forest
+
+``` {r rand_forest_1}
+library(randomForest)
+
+iris_classifier <- randomForest(iris.trainingtarget ~ ., data=cbind(iris.training,iris.trainingtarget), #train data set 
+                                importance = T) 
+iris_classifier  
+
+plot(iris_classifier)
+
+predicted_table <- predict(iris_classifier, iris.test)
+
+
+tab<-table(observed = iris.testtarget, predicted = predicted_table)
+score_rf<-sum(diag(tab))/(sum(tab))
+score_rf
+
+
+
+```
+
+
+``` {r rand_forest_2}
+#Illustration
+
+iris_classifier <- randomForest(iris.trainingtarget ~ ., data=cbind(iris.training[,3:4],iris.trainingtarget), #train data set 
+                                importance = T) 
+iris_classifier  
+
+plot(iris_classifier)
+
+predicted_table <- predict(iris_classifier, iris.test)
+table(observed = iris.testtarget, predicted = predicted_table)
+
+
+
+predicted_x<-predict(iris_classifier,newdata = list("Petal.Length"=xgrid[,1], "Petal.Width"=xgrid[,2] ))
+
+plot(xgrid,col=c(2,3,4)[as.numeric(predicted_x)],pch = 20,cex = .2, main = "Neural Network",xlab="Petal Length",ylab="Petal Width")
+
+#points(xtrain[,1],xtrain[,2],col=c("darkred","forestgreen","darkblue")[unclass(ytrain)],pch=".",cex=5)   
+points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
+
+
+
+
+```
+# Summary
+
+``` {r summary_1}
+
+#Illustration
+
+summary<-c("NB"= score_nb, "kNN"= iris_acc[20], "logistic"=scorelog,"SVM"=score_svm, "NN"=score_keras, "DT"=score_dt_gini, "RF"=score_rf)
+print(summary)
+```
