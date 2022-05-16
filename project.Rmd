@@ -287,7 +287,7 @@ plot(fit)
 score <- model3 %>% evaluate(iris.test_keras, iris.testLabels, batch_size = 128 )
 
 # Print the score
-score_keras<-score$acc
+score_keras<-score['acc']
 print(score_keras)
 ```
 
