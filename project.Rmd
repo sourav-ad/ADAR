@@ -1,7 +1,7 @@
 ---
-title: "Classification Problem"
-author: "Verena"
-date: "31 3 2022"
+title: "Classification Methods: Implementations in R"
+author: "Verena Koeck, Sourav Adhikari"
+date: "30 5 2022"
 output: pdf_document
 ---
 
@@ -383,7 +383,7 @@ score_dt_gini
 
 predicted_x<-predict(dtree_fit_info,newdata = list("Sepal.Length"=xgrid[,1], "Sepal.Width"=xgrid[,2],  "Petal.Length"=xgrid[,1], "Petal.Width"=xgrid[,2] ))
 
-plot(xgrid,col=c(2,3,4)[as.numeric(predicted_x)],pch = 20,cex = .2, main = "Neural Network",xlab="Petal Length",ylab="Petal Width")
+plot(xgrid,col=c(2,3,4)[as.numeric(predicted_x)],pch = 20,cex = .2, main = "Decision Trees",xlab="Petal Length",ylab="Petal Width")
 
 #points(xtrain[,1],xtrain[,2],col=c("darkred","forestgreen","darkblue")[unclass(ytrain)],pch=".",cex=5)   
 points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
@@ -407,8 +407,6 @@ tab<-table(observed = iris.testtarget, predicted = predicted_table)
 score_rf<-sum(diag(tab))/(sum(tab))
 score_rf
 
-
-
 ```
 
 
@@ -428,13 +426,31 @@ table(observed = iris.testtarget, predicted = predicted_table)
 
 predicted_x<-predict(iris_classifier,newdata = list("Petal.Length"=xgrid[,1], "Petal.Width"=xgrid[,2] ))
 
-plot(xgrid,col=c(2,3,4)[as.numeric(predicted_x)],pch = 20,cex = .2, main = "Neural Network",xlab="Petal Length",ylab="Petal Width")
+plot(xgrid,col=c(2,3,4)[as.numeric(predicted_x)],pch = 20,cex = .2, main = "Random Forest",xlab="Petal Length",ylab="Petal Width")
 
 #points(xtrain[,1],xtrain[,2],col=c("darkred","forestgreen","darkblue")[unclass(ytrain)],pch=".",cex=5)   
 points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
 
+```
 
+#Cross Validation
 
+```{cross_validation}
+data(iris)
+library(caret)
+
+tc <- trainControl(method = "cv", number = 10)
+
+fit <- train(Species ~.,
+              data = iris,
+              method = "rf",
+              trControl = tc,
+              metric = "Accuracy")
+
+print(fit)
+
+pred <- predict(fit, iris[ ,-5])
+confusionMatrix(iris[ ,5], pred)
 
 ```
 # Summary
