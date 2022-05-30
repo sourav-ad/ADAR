@@ -88,6 +88,8 @@ points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",c
 ```
 
 
+
+
 # K-Nearest-Neighbors estimation
 
 ```{r knn_1}
@@ -346,6 +348,27 @@ print(score4)
 
 ```
 
+# Cross Validation
+
+```{r cross_validation_nnet}
+data(iris)
+library(caret)
+
+tc <- trainControl(method = "cv", number = 10)
+
+fit <- train(Species ~.,
+              data = iris,
+              method = "nnet", #Neural Net
+              trControl = tc,
+              metric = "Accuracy")
+
+print(fit)
+
+pred <- predict(fit, iris[ ,-5])
+confusionMatrix(iris[ ,5], pred)
+
+```
+
 # Decision Trees
 ```{r decisiontree0, include=FALSE}
 library(rpart.plot)
@@ -433,9 +456,9 @@ points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",c
 
 ```
 
-#Cross Validation
+# Cross Validation
 
-```{cross_validation}
+```{r cross_validation}
 data(iris)
 library(caret)
 
