@@ -1,0 +1,51 @@
+---
+title: "Classification Methods: Implementations in R"
+author: "Sourav Adhikari, Verena Koeck"
+date: "13 May 2022"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Dataset
+
+-Iris
+
+## Naive Bayes
+
+-Implementation
+
+## Logistic Regression
+
+-Implementation
+
+## k-Nearest Neighbours
+
+-Implementation
+
+## Logistic Regression
+
+-Implementation
+
+## Decision Trees
+
+-Implementation
+
+## Random Forests
+
+-Implementation
+
+## Neural Networks
+
+-Implementation
+
+## Summary
+
+-Summary
+
+## References
+
+-References
+
