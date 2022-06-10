@@ -1,0 +1,269 @@
+\documentclass[aspectratio=1610, t]{beamer}
+
+
+\usepackage{pgfplots}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{pdfpages}
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+
+\pgfplotsset{compat=1.15}
+
+\def \A {\mathcal A}
+\def \C {\mathcal C}
+\def \E {\mathcal E}
+\def \F {\mathcal F}
+\def \G {\mathcal G}
+\def \H {\mathcal H}
+\def \M {\mathcal M}
+\def \N {\mathcal N}
+\def \cP {\mathcal P}
+\def \S {\mathcal S}
+\def \V {\mathcal V}
+
+\def \P {\mathbf P}
+\def \Q {\mathbf Q}
+\def \I {{\mathbf 1}}
+
+\def \R {\mathbb R}
+\def \bF {\mathbb F}
+\def \bG {\mathbb G}
+\def \bH {\mathbb H}
+\def \bE {\mathbb E}
+\def \bN {\mathbb N}
+
+\newcommand{\ud}{\mathrm d}
+\newcommand{\ds}{\displaystyle}
+%\newcommand{\esp}[2][\mathbb E] {#1\left[#2\right]}
+\newcommand{\esp}[1]{\mathbb{E}^\Q \left[#1\right]}
+\newcommand{\widehatesp}[2][\widehat{\mathbb E}] {#1\left[#2\right]}
+%\newcommand{\var}[2][{\rm Var}] {#1\left(#2\right)}
+\newcommand{\espp}[2][\mathbb {\widehat E}] {#1\left[#2\right]}
+\newcommand{\condesp}[2][\G_t]       {\mathbb E\left.\left[#2\right|#1\right]}
+\newcommand{\condespf}[2][\F_t]       {\mathbb E\left.\left[#2\right|#1\right]}
+\newcommand{\condespfo}[2][\F_0]       {\mathbb E\left.\left[#2\right|#1\right]}
+\newcommand{\condespfto}[2][\F_{t_0}]       {\mathbb E\left.\left[#2\right|#1\right]}
+\newcommand{\condesphto}[2][\H_{t_0}]       {\mathbb E\left.\left[#2\right|#1\right]}
+\newcommand{\condesph}[2][\H_t]       {\mathbb E\left.\left[#2\right|#1\right]}
+\newcommand{\condespHH}[2][\H_t]       {\mathbb E^{\mathbf P^*}\left.\left[#2\right|#1\right]}
+\newcommand{\condespho}[2][\H_{0}]       {\mathbb E\left.\left[#2\right|#1\right]}
+\newcommand{\condesphoo}[2][\H_{0}]       {\mathbb E^{\mathbf P^*}\left.\left[#2\right|#1\right]}
+\newcommand{\condesphu}[2][\H_{u}]    {\mathbb E \left.\left[#2\right|#1\right]}
+\newcommand{\condesphT}[2][\H_{T}] {\mathbb E \left.\left[#2\right|#1\right]}
+\newcommand{\condesphTT}[2][\H_{T}] {\mathbb E^{\mathbf P^*} \left.\left[#2\right|#1\right]}
+%\newcommand{\condespff}[2][\F_{\tau-}]       {\widehat E\left.\left[#2\right|#1\right]}
+%\newcommand{\condespg}[2][\G_\tau]       {\widehat E\left.\left[#2\right|#1\right]}
+%\newcommand{\condespgg}[2][\G_{\tau-}]       {\widehat E\left.\left[#2\right|#1\right]}
+\newcommand{\doleans}[1] {\mathcal E\left(#1\right)}
+%\newcommand{\ind}{\mbox{1 \hspace{-10 pt} I}}
+\newcommand{\condesphh}[2][\H_{\tau-}]   {\mathbb E\left.\left[#2\right|#1\right]}
+\newcommand{\CL}{\operatorname{CL}}
+\newcommand{\CVA}{\operatorname{CVA}}
+\newcommand{\CDS}{\operatorname{CDS}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ====== Define Style ======= %% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% ====== title page ======
+
+	%% required inputs
+	\author{Sourav Adhikari, {Verena K\"ock}}             %% Author
+	\title{\LARGE {Classification Methods: \\ Applications in R} }  %% Presentation Title
+	\newcommand{\titleLength}{2}         %% Title length: 2 = 2 lines, 1 = 1 line
+	\date{Date: 2022-06-13}                    %% Date, leave blank to avoid include, comment out to get current dat
+	\newcommand{\titleBackground}{3}     %% Background graphic: 0 = none, 1 = D2, 2 = Campus, 3 = Forum
+
+	%% optional inputs 
+	\subtitle{ }                          %% (optional) Subtitle, comment out lines to avoid include
+	\newcommand{\affiliationText}{\textit{ Project Presentation - ADAR}} %% (optional) Title page text, comment out lines to avoid include, enlarges white box on tile page
+
+%% ====== footer ======
+	\newcommand{\placementLogoFooter}{1}           %% 1 = logo right, 2 = logo left
+	\newcommand{\slideNumberLabelFooter}{Slide}    %% Page/Slide/Folie/Seite
+	\newcommand{\dateFooter}{2022-06-13}           %% (optional) Date in footline, comment out lines to avoid include
+	\newcommand{\textFooter}{} %% (optional) Text for footline, e.g. title, comment out lines to avoid include, max. 1 line
+
+%% ====== header (optional) ====== 
+	%\newcommand{\sectionHeader}{Section (optional)}  %% (optional) Text before section number, e.g. Section or Kapitel; comment out to omit in presentation
+
+%% ====== end page (optional) ====== 
+	%\newcommand{\address}{Add address here \\ (optional)}   %% (optional) Address text for end page, comment out lines to avoid include and to avoid end page
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ====== Preamble ======= %% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% ====== settings (optional) ======
+	\usenavigationsymbolstemplate{}             %% (optional) Comment out to include navigation bar
+	%\newcommand{\includeTocAtBeginSection}{}   %% (optional) Table of contents at begin of every section, comment out lines to avoid include
+	%\newcommand{\includePartPages}{}
+	%\newcommand{\includeTocAtBeginPart}{}
+
+%% ====== load beamer style ======
+	\usepackage{beamerthemewu2017}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ====== Begin Document ======= %% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% ====== Title Page ======
+\maketitle
+
+													
+%% ====== Outline at beginning of document ======
+%\begin{frame}{Outline (optional)}
+%		\tableofcontents							%% (optional) Table of contents, comment out lines to avoid include
+%\end{frame}
+													
+
+%% ====== Section  ======
+\section{Motivation}
+
+
+%% ====== Slide ======
+\begin{frame}{(Statistical) Classification: What is it?}
+
+\begin{itemize}
+\item The problem of identifying which of a set of categories an observation belongs to.
+  \begin{itemize}
+  \item E.g. assigning an incoming email to "spam" or "inbox" mailbox.
+  \end{itemize}
+\item Classification can be thought of as two separate problems: 
+  \begin{itemize}
+  \item binary classification 
+  \item multiclass classification.
+  \end{itemize}
+\medskip
+\item \textcolor{wublue}{\textbf{Examples}} for classification methods are:
+  \begin{itemize}
+  \item Naive Bayes
+  \item k-Nearest Neighbors
+  \item Neural Networks
+  \item Others: Decision Trees, Random Forest, Logistic Regression, SVM, etc.
+  \end{itemize}
+  \medskip
+\item  \textcolor{wublue}{\textbf{This project:}} We explain and present results from first three methods: Naive Bayes, k- Nearest Neighbors and Neural Networks.
+\end{itemize}
+
+\end{frame}
+
+\section{Dataset1}
+\begin{frame}{The IRIS dataset I}
+\begin{itemize}
+  \item The data contains 4 measurements for 50 flowers from each of three species of \textit{iris}:
+    \begin{itemize}
+    \item \texttt{{Sepal.Length}}, \texttt{Sepal.Width}, \texttt{Petal.Length} and \texttt{Petal.Width} in cm
+    \item \texttt{Species}: setosa, virginica and versicolor
+    \end{itemize}
+\end{itemize}
+    	\begin{tabular}{@{}c@{\hspace{.5cm}}c@{}}
+		\includegraphics[width=0.95\textwidth]{iris.png}
+	\end{tabular}
+\end{frame}
+   
+\section{Dataset2}
+\begin{frame}{IRIS Data: \small setosa(red), versicolor(gr.), virginica(bl.)}
+\vspace{-1.9cm}
+<<scatterplot,echo=FALSE,fig.align="center",fig.width = 5.5, fig.height = 4>>=
+data(iris)
+pairs(iris[1:4],main="", pch=21,bg=c("red","green","blue")[unclass(iris$Species)],cex = 0.8)
+@
+\end{frame}
+
+\begin{frame}{Naive Bayes}
+\begin{itemize}
+\item Naive Bayes classifiers are simple "probabilistic classifiers" based on Bayes' theorem.
+\item \textit{Disadvantage}: (\textbf{Strong}) assumption, that the features are independent (i.e presence of one particular feature does not affect the other). Hence the adjective \textbf{naive}.
+\item \textit{Advantage}: Requires only a small number of training data to estimate the parameters.
+\item Let $y$ be the category variable, and $X$ the features, then \textcolor{wublue}{\textbf{Bayes theorem}} is:
+$$P(y|X) = \frac{P(X|y)P(y)}{P(X)},$$
+
+\item \textcolor{wublue}{\textbf{Steps:}}
+\begin{enumerate}\small
+  \item Estimate prior probability $P(X)$: Compute the relative frequency of each class/species.
+  \item Assume normal distribution for each class (species). Estimate $\mu$ and $\sigma^2$ for each class.
+  \item For a new observation, apply Bayes theorem (and normalize) to get a vector of probabilities, e.g. $(\bf{0.5},0.25,0.25)$!
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame} {Naive Bayes in R} 
+<<data,echo=FALSE,results='hide'>>=
+# Determine sample size
+set.seed(3)
+ind <- sample(2, nrow(iris), replace=TRUE, prob=c(0.67, 0.33))
+
+# Split the `iris` data
+iris.training <- iris[ind==1, 1:4]
+iris.test <- iris[ind==2, 1:4]
+
+# Split the class attribute
+iris.trainingtarget <- iris[ind==1, 5]
+iris.testtarget <- iris[ind==2, 5]
+
+make.grid<-function(x,n=200){
+  grange=apply(x,2,range)
+  x1=seq(from=grange[1,1],to=grange[2,1],length=n)
+  x2=seq(from=grange[1,2],to=grange[2,2],length=n)
+  expand.grid(X1=x1,X2=x2)
+}
+
+xtrain<-iris.training[,3:4]
+xtest<-iris.test[,3:4]
+ytest<-iris.testtarget
+ytrain<-iris.trainingtarget
+xgrid = make.grid(xtrain, n = 100)
+colnames(xgrid)<-c("Petal.Length", "Petal.Width")
+@
+
+
+
+\vspace{-2cm}
+
+<<nb1,echo=FALSE,fig.align="center",fig.width = 4, fig.height = 4>>=
+library("e1071")
+model_nb<-naiveBayes(xtrain, ytrain)
+nb_x <- predict(model_nb,newdata=list("Petal.Length"=xgrid[,1], "Petal.Width"= xgrid[,2]))
+plot(xgrid,col=c(2,3,4)[as.numeric(nb_x)],pch = 20,cex = .1, main = "",xlab="Petal Length",ylab="Petal Width")
+points(xtrain[,1],xtrain[,2],col=c("red","green","blue")[unclass(ytrain)],pch=".",cex=5) 
+@
+
+\end{frame}
+
+\begin{frame}{K-nearest neighbors}
+\begin{itemize}
+\item A non-parametric supervised learning method
+
+\item Uses a distance metric to make classifications or predictions about the grouping of an individual data point.
+
+\item Object is assigned to the class it is most common with among its k nearest neighbors.
+
+\item \textit{Advantages}: Easy to understand and implement, no assumptions required
+\item \textit{Disadvantages}: Curse of Dimensionality
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{1-nearest neighbour}
+\vspace{-2cm}
+<<knn1,echo=FALSE,fig.align="center",fig.width = 4, fig.height = 4>>=
+library(FNN) 
+i<-1
+knn_x <- knn(train=xtrain,  test=xgrid , cl=factor(ytrain), k=i) 
+plot(xgrid,col=c(2,3,4)[as.numeric(knn_x)],pch = 20,cex = .1, main = "",xlab="Petal Length",ylab="Petal Width")
+points(xtrain[,1],xtrain[,2],col=c("red","green","blue")[unclass(ytrain)],pch=".",cex=5)   
+@
+\end{frame}
+
+
+%% ====== End Document ====== %%
+\end{document}
