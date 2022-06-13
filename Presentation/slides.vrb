@@ -1,0 +1,32 @@
+\frametitle{k-fold Cross Validation: Neural Network}
+
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{set.seed}\hlstd{(}\hlnum{1}\hlstd{)}
+\hlstd{nnet_fit} \hlkwb{<-} \hlkwd{train}\hlstd{(Species} \hlopt{~}\hlstd{.,}\hlkwc{data} \hlstd{=} \hlkwd{data.frame}\hlstd{(iris.training,}\hlstr{"Species"}\hlstd{=}
+  \hlstd{iris.trainingtarget),} \hlkwc{method} \hlstd{=} \hlstr{"nnet"}\hlstd{,} \hlkwc{trControl}\hlstd{=tc,} \hlkwc{metric} \hlstd{=} \hlstr{"Accuracy"}\hlstd{,}\hlkwc{trace} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+\hlstd{nnet_fit}\hlopt{$}\hlstd{results}
+\end{alltt}
+\begin{verbatim}
+##   size decay  Accuracy     Kappa AccuracySD    KappaSD
+## 1    1 0e+00 0.8212121 0.7208569 0.13431685 0.21313940
+## 2    1 1e-04 0.7517172 0.5951669 0.26779376 0.44643182
+## 3    1 1e-01 0.9497980 0.9223883 0.07103029 0.10906072
+## 4    3 0e+00 0.9536364 0.9280673 0.08891242 0.13915422
+## 5    3 1e-04 0.9618182 0.9419596 0.04938557 0.07510644
+## 6    3 1e-01 0.9800000 0.9694639 0.04216370 0.06437816
+## 7    5 0e+00 0.9309091 0.8930024 0.09459206 0.14926891
+## 8    5 1e-04 0.9618182 0.9425365 0.04938557 0.07436975
+## 9    5 1e-01 0.9800000 0.9694639 0.04216370 0.06437816
+\end{verbatim}
+\begin{alltt}
+\hlstd{pred} \hlkwb{<-} \hlkwd{predict}\hlstd{(nnet_fit,iris.training); result}\hlkwb{<-}\hlkwd{confusionMatrix}\hlstd{(iris.trainingtarget, pred)}
+\hlkwd{sum}\hlstd{(}\hlkwd{diag}\hlstd{(result}\hlopt{$}\hlstd{table))}\hlopt{/}\hlkwd{sum}\hlstd{(result}\hlopt{$}\hlstd{table)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.9902913
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+

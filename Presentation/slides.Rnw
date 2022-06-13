@@ -100,9 +100,9 @@
 
 %% ====== settings (optional) ======
 	\usenavigationsymbolstemplate{}             %% (optional) Comment out to include navigation bar
-	%\newcommand{\includeTocAtBeginSection}{}   %% (optional) Table of contents at begin of every section, comment out lines to avoid include
-	%\newcommand{\includePartPages}{}
-	%\newcommand{\includeTocAtBeginPart}{}
+	%\newcommand{%\includeTocAtBeginSection}{}   %% (optional) Table of contents at begin of every section, comment out lines to avoid include
+	%\newcommand{%\includePartPages}{}
+	%\newcommand{%\includeTocAtBeginPart}{}
 
 %% ====== load beamer style ======
 	\usepackage{beamerthemewu2017}
@@ -113,6 +113,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
+
 
 %% ====== Title Page ======
 \maketitle
@@ -158,7 +159,7 @@
 \section{Dataset1}
 \begin{frame}{The IRIS dataset I}
 \begin{itemize}
-  \item The data contains 4 measurements for 50 flowers from each of three species of \textit{iris}:
+  \item The data contains 4 measurements for 150 flowers from each of three species of \textit{iris}:
     \begin{itemize}
     \item \texttt{{Sepal.Length}}, \texttt{Sepal.Width}, \texttt{Petal.Length} and \texttt{Petal.Width} in cm
     \item \texttt{Species}: setosa, virginica and versicolor
@@ -178,25 +179,16 @@ pairs(iris[1:4],main="", pch=21,bg=c("red","green","blue")[unclass(iris$Species)
 @
 \end{frame}
 
-\begin{frame}{Naive Bayes}
-\begin{itemize}
-\item Naive Bayes classifiers are simple "probabilistic classifiers" based on Bayes' theorem.
-\item \textit{Disadvantage}: (\textbf{Strong}) assumption, that the features are independent (i.e presence of one particular feature does not affect the other). Hence the adjective \textbf{naive}.
-\item \textit{Advantage}: Requires only a small number of training data to estimate the parameters.
-\item Let $y$ be the category variable, and $X$ the features, then \textcolor{wublue}{\textbf{Bayes theorem}} is:
-$$P(y|X) = \frac{P(X|y)P(y)}{P(X)},$$
 
-\item \textcolor{wublue}{\textbf{Steps:}}
-\begin{enumerate}\small
-  \item Estimate prior probability $P(X)$: Compute the relative frequency of each class/species.
-  \item Assume normal distribution for each class (species). Estimate $\mu$ and $\sigma^2$ for each class.
-  \item For a new observation, apply Bayes theorem (and normalize) to get a vector of probabilities, e.g. $(\bf{0.5},0.25,0.25)$!
-\end{enumerate}
-\end{itemize}
-\end{frame}
+\begin{frame}[t]{Validation of the training procedure} \small
+  \begin{itemize}
+    \item We split the data into training (points) and testing set (squares) in the ratio 67:33.
+    \item We perform k-fold cross validation.
+   \end{itemize}
 
-\begin{frame} {Naive Bayes in R} 
-<<data,echo=FALSE,results='hide'>>=
+   \vspace{-1.8cm}
+   
+   <<data,echo=FALSE,results='hide'>>=
 # Determine sample size
 set.seed(3)
 ind <- sample(2, nrow(iris), replace=TRUE, prob=c(0.67, 0.33))
@@ -226,6 +218,33 @@ colnames(xgrid)<-c("Petal.Length", "Petal.Width")
 
 
 
+
+<<plot,echo=FALSE,fig.align="center",fig.width = 4, fig.height = 3.2 ,results="hide">>=
+plot(xtrain[,1],xtrain[,2],col=c("red","green","blue")[unclass(ytrain)],pch=16,xlab="Petal.Length", ylab= "Petal.Width",cex=0.4)   
+points(xtest[,1],xtest[,2],col=c("darkred","forestgreen","darkblue")[unclass(ytest)],pch=".",cex=3)  
+@
+
+\end{frame}
+
+\begin{frame}{Naive Bayes}
+\begin{itemize}
+\item Naive Bayes classifiers are simple "probabilistic classifiers" based on Bayes' theorem.
+\item \textit{Disadvantage}: (\textbf{Strong}) assumption, that the features are independent (i.e presence of one particular feature does not affect the other). Hence the adjective \textbf{naive}.
+\item \textit{Advantage}: Requires only a small number of training data to estimate the parameters.
+\item Let $y$ be the category variable, and $X$ the features, then \textcolor{wublue}{\textbf{Bayes theorem}} is:
+$$P(y|X) = \frac{P(X|y)P(y)}{P(X)},$$
+
+\item \textcolor{wublue}{\textbf{Steps:}}
+\begin{enumerate}\small
+  \item Estimate prior probability $P(X)$: Compute the relative frequency of each class/species.
+  \item Assume normal distribution for each class (species). Estimate $\mu$ and $\sigma^2$ for each class.
+  \item For a new observation, apply Bayes theorem (and normalize) to get a vector of probabilities, e.g. $(\bf{0.5},0.25,0.25)$!
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame} {Naive Bayes in R} 
+
 \vspace{-2cm}
 
 <<nb1,echo=FALSE,fig.align="center",fig.width = 4, fig.height = 4>>=
@@ -233,7 +252,8 @@ library("e1071")
 model_nb<-naiveBayes(xtrain, ytrain)
 nb_x <- predict(model_nb,newdata=list("Petal.Length"=xgrid[,1], "Petal.Width"= xgrid[,2]))
 plot(xgrid,col=c(2,3,4)[as.numeric(nb_x)],pch = 20,cex = .1, main = "",xlab="Petal Length",ylab="Petal Width")
-points(xtrain[,1],xtrain[,2],col=c("red","green","blue")[unclass(ytrain)],pch=".",cex=5) 
+points(xtrain[,1],xtrain[,2],col=c("red","green","blue")[unclass(ytrain)],pch=16,cex=0.6) 
+points(xtest[,1],xtest[,2],col=c("darkred","forestgreen","darkblue")[unclass(ytest)],pch=".",cex=5) 
 @
 
 \end{frame}
@@ -260,10 +280,254 @@ library(FNN)
 i<-1
 knn_x <- knn(train=xtrain,  test=xgrid , cl=factor(ytrain), k=i) 
 plot(xgrid,col=c(2,3,4)[as.numeric(knn_x)],pch = 20,cex = .1, main = "",xlab="Petal Length",ylab="Petal Width")
-points(xtrain[,1],xtrain[,2],col=c("red","green","blue")[unclass(ytrain)],pch=".",cex=5)   
+points(xtrain[,1],xtrain[,2],col=c("red","green","blue")[unclass(ytrain)],pch=16,cex=0.6) 
+points(xtest[,1],xtest[,2],col=c("darkred","forestgreen","darkblue")[unclass(ytest)],pch=".",cex=5) 
 @
 \end{frame}
 
+
+
+%% ====== Slide ======
+\begin{frame}[t]{Neural Networks}
+
+\begin{itemize}
+  \item Neural networks (NNs) are computing systems inspired by the biological neural networks that constitute animal brain. 
+  \item They learn forming probability-weighted associations between ``input" and ``result". 
+\end{itemize}
+
+\centering
+\includegraphics[scale=0.3]{neuron.png}
+        
+\end{frame}
+
+
+%% ====== Slide ======
+\begin{frame}[t]{Neural Networks}
+
+\begin{itemize}
+  \item For classification tasks, NNs utilize an activation function, for example a logistic function:
+	$$f(x) = \frac{L}{1 + e^{-k(x - x_0)}}$$
+  
+\end{itemize}
+
+\centering
+\includegraphics[scale=0.17]{logistic.png}
+        
+\end{frame}
+
+\begin{frame}{Neural network}
+
+\vspace{-2cm}
+<<nnw11,message=FALSE, echo=FALSE,results="hide">>=
+
+library(neuralnet)
+
+
+iris$setosa <- iris$Species=="setosa"
+iris$virginica <- iris$Species == "virginica"
+iris$versicolor <- iris$Species == "versicolor"
+iris.training_nn <- iris[ind==1,]
+iris.test_nn <- iris[(ind==2),]
+
+
+
+library(neuralnet)
+iris.net <- neuralnet(setosa+versicolor+virginica ~ 
+                        Sepal.Length + Sepal.Width + Petal.Length + Petal.Width, 
+                      data=iris.training_nn, hidden=c(10,10), rep = 5, err.fct = "ce", act.fct = "logistic",
+                      linear.output = F, lifesign = "minimal", stepmax = 1000000,
+                      threshold = 0.01)
+
+
+#plot(iris.net, rep="best")
+
+iris.prediction <- compute(iris.net, iris.test_nn)
+idx <- apply(iris.prediction$net.result, 1, which.max)
+predicted <- c('setosa', 'versicolor', 'virginica')[idx]
+tab<-table(predicted, iris.test_nn$Species)
+
+score_net<-sum(diag(tab)/sum(tab))
+score_net
+
+
+#Illustration
+library(neuralnet)
+iris.net <- neuralnet(setosa+versicolor+virginica ~ Petal.Length + Petal.Width, 
+                      data=iris.training_nn, hidden=c(10,10), rep = 5, err.fct = "ce", act.fct = "logistic",
+                      linear.output = F, lifesign = "minimal", stepmax = 1000000,
+                      threshold = 0.01)
+
+iris.prediction <- compute(iris.net, cbind(xgrid[,1],xgrid[,2]))
+idx <- apply(iris.prediction$net.result, 1, which.max)
+predicted_x <- c(1,2, 3)[idx]
+
+#plot(xgrid,col=c(2,3,4)[as.numeric(predicted_x)],pch = 20,cex = .2, main = "Neural Network",xlab="Petal Length",ylab="Petal Width")
+#points(xtest[,1],xtest[,2],col=c("red","green","blue")[unclass(ytest)],pch=".",cex=7)   
+@
+
+<<nnw1,echo=FALSE,fig.align="center",fig.width = 4, fig.height = 4,results="hide">>=
+
+plot(xgrid,col=c(2,3,4)[as.numeric(predicted_x)],pch = 20,cex = .1, main = "",xlab="Petal Length",ylab="Petal Width")
+
+#points(xtrain[,1],xtrain[,2],col=c("darkred","forestgreen","darkblue")[unclass(ytrain)],pch=".",cex=5)   
+points(xtrain[,1],xtrain[,2],col=c("red","green","blue")[unclass(ytrain)],pch=16,cex=0.6) 
+points(xtest[,1],xtest[,2],col=c("darkred","forestgreen","darkblue")[unclass(ytest)],pch=".",cex=5) 
+@
+
+\end{frame}
+
+%% ====== Slide ======
+%\begin{frame}[t]{Neural Networks}
+
+%\centering
+%\includegraphics[scale=0.5]{nn_learn.png}
+        
+%\end{frame}
+
+
+
+
+%% ====== Slide ======
+\begin{frame}[t]{Cross Validation}
+
+\begin{itemize}
+  \item A resampling procedure for model validation.
+  \item Assessing how the results of a statistical analysis will generalize to an independent data set.
+  \item Estimates how accurately a predictive model will perform in practice.
+  \item For the Iris dataset, we specifically perform the k-fold cross validation.
+  
+\end{itemize}
+        
+\end{frame}
+
+%% ====== Slide ======
+\begin{frame}[t]{k-fold Cross Validation}
+
+\begin{itemize}
+  \item Shuffle the dataset randomly.
+  \item Split the dataset into k groups.
+  \item For each unique group:
+  \begin{itemize}
+    \item Take the group as a hold out or test data set.
+    \item Take the remaining groups as a training data set.
+    \item Fit a model on the training set and evaluate it on the test set.
+    \item Retain the evaluation score and discard the model.
+  \end{itemize}
+  \item Summarize the skill of the model using the sample of model evaluation scores.
+  \item Note: The k value must be chosen carefully for the data sample.
+\end{itemize}
+        
+\end{frame}
+
+%% ====== Slide ======
+\begin{frame}[t]{k-fold Cross Validation}
+
+\begin{itemize}
+  \item Performed using the function \texttt{train()} included in the R package \texttt{caret}.
+  
+  <<cv12,size="scriptsize">>=
+library(caret)
+
+tc <- trainControl(method = "cv", number = 10)
+
+fit <- train(Species ~.,data = data.frame(iris.training,"Species"=
+                iris.trainingtarget), method = "nb",trControl = tc, metric = "Accuracy")
+@
+
+  \item k=10 is used.
+  \item Qualitative aspect is measured by Cohen's kappa score and the accuracy measure.  
+  \item Measures the agreement between two raters who each classify N items into C mutually exclusive categories:
+  
+  $$\kappa = \frac{p_o - p_e}{1 - p_e}$$
+\end{itemize}
+        
+\end{frame}
+
+
+
+
+
+%% ====== Slide ======
+\begin{frame}[fragile]{k-fold Cross Validation: Naive Bayes}
+
+<<cv1,size="scriptsize">>=
+library(caret)
+set.seed(1)
+tc <- trainControl(method = "cv", number = 10)
+fit <- train(Species ~.,data = data.frame(iris.training,"Species"=
+  iris.trainingtarget),method = "nb",trControl = tc, metric = "Accuracy")
+fit$results
+pred <- predict(fit, iris.test)
+result<-confusionMatrix(iris.testtarget, pred)
+sum(diag(result$table))/sum(result$table)
+@
+
+        
+\end{frame}
+
+%% ====== Slide ======
+
+\begin{frame}[fragile]{k-fold Cross Validation: k-nearest Neighbours}
+<<cv2,size="scriptsize">>=
+set.seed(1)
+knn_fit <- train(Species ~.,data = data.frame(iris.training,"Species"=
+  iris.trainingtarget), method = "knn", trControl=tc, metric = "Accuracy")
+knn_fit$results
+pred <- predict(knn_fit,iris.training)
+result<-confusionMatrix(iris.trainingtarget, pred)
+sum(diag(result$table))/sum(result$table)
+@
+\end{frame}
+
+
+%% ====== Slide ======
+\begin{frame}[fragile]{k-fold Cross Validation: Neural Network}
+
+<<cv3,size="scriptsize",message=FALSE>>=
+set.seed(1)
+nnet_fit <- train(Species ~.,data = data.frame(iris.training,"Species"=
+  iris.trainingtarget), method = "nnet", trControl=tc, metric = "Accuracy",trace = FALSE)
+nnet_fit$results
+pred <- predict(nnet_fit,iris.training); result<-confusionMatrix(iris.trainingtarget, pred)
+sum(diag(result$table))/sum(result$table)
+@
+        
+\end{frame}
+
+%% ====== Slide ======
+\begin{frame}[t]{Summary}
+
+\begin{center}
+\begin{tabular}{ c c c }
+ \textbf{Method} & \textbf{Accuracy Score}  & \textbf{Accuracy Test} \\
+ Naive Bayes & 0.9607 &  0.9574 \\
+ 9-NN & 0.9800 & 0.9806 \\
+ Neural Network & 0.9800  & 0.9903  
+\end{tabular}
+
+\begin{itemize}
+  \item Among the methods discussed, kNN with k = 9 offers the highest rate of accuracy.
+  \item There is no ``one method fits all" approach when undertaking classification tasks.
+\end{itemize}
+\end{center}
+        
+\end{frame}
+
+
+
+%% ====== End Document ====== %%
+
+\begin{frame}{References}
+\begin{thebibliography}{10}
+\setbeamertemplate{bibliography item}[text]
+\bibitem{Md}
+Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, "An Introduction to Statistical Learning : with Applications in R", Springer, 2013.
+\bibitem{Md}
+McCulloch, Warren, Walter Pitts, "A Logical Calculus of Ideas Immanent in Nervous Activity", Bulletin of Mathematical Biophysics. 5 (4): 115–133, 1943.
+
+\end{thebibliography}
+
+\end{frame}
 
 %% ====== End Document ====== %%
 \end{document}

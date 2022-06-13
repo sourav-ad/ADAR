@@ -150,9 +150,9 @@
 
 %% ====== settings (optional) ======
 	\usenavigationsymbolstemplate{}             %% (optional) Comment out to include navigation bar
-	%\newcommand{\includeTocAtBeginSection}{}   %% (optional) Table of contents at begin of every section, comment out lines to avoid include
-	%\newcommand{\includePartPages}{}
-	%\newcommand{\includeTocAtBeginPart}{}
+	%\newcommand{%\includeTocAtBeginSection}{}   %% (optional) Table of contents at begin of every section, comment out lines to avoid include
+	%\newcommand{%\includePartPages}{}
+	%\newcommand{%\includeTocAtBeginPart}{}
 
 %% ====== load beamer style ======
 	\usepackage{beamerthemewu2017}
@@ -164,6 +164,7 @@
 
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
+
 
 %% ====== Title Page ======
 \maketitle
@@ -209,7 +210,7 @@
 \section{Dataset1}
 \begin{frame}{The IRIS dataset I}
 \begin{itemize}
-  \item The data contains 4 measurements for 50 flowers from each of three species of \textit{iris}:
+  \item The data contains 4 measurements for 150 flowers from each of three species of \textit{iris}:
     \begin{itemize}
     \item \texttt{{Sepal.Length}}, \texttt{Sepal.Width}, \texttt{Petal.Length} and \texttt{Petal.Width} in cm
     \item \texttt{Species}: setosa, virginica and versicolor
@@ -234,6 +235,32 @@
 \end{knitrout}
 \end{frame}
 
+
+\begin{frame}[t]{Validation of the training procedure} \small
+  \begin{itemize}
+    \item We split the data into training (points) and testing set (squares) in the ratio 67:33.
+    \item We perform k-fold cross validation.
+   \end{itemize}
+
+   \vspace{-1.8cm}
+   
+
+
+
+
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+
+{\centering \includegraphics[width=\maxwidth]{figure/plot-1} 
+
+}
+
+
+\end{knitrout}
+
+\end{frame}
+
 \begin{frame}{Naive Bayes}
 \begin{itemize}
 \item Naive Bayes classifiers are simple "probabilistic classifiers" based on Bayes' theorem.
@@ -252,9 +279,6 @@ $$P(y|X) = \frac{P(X|y)P(y)}{P(X)},$$
 \end{frame}
 
 \begin{frame} {Naive Bayes in R} 
-
-
-
 
 \vspace{-2cm}
 
@@ -298,6 +322,264 @@ $$P(y|X) = \frac{P(X|y)P(y)}{P(X)},$$
 \end{knitrout}
 \end{frame}
 
+
+
+%% ====== Slide ======
+\begin{frame}[t]{Neural Networks}
+
+\begin{itemize}
+  \item Neural networks (NNs) are computing systems inspired by the biological neural networks that constitute animal brain. 
+  \item They learn forming probability-weighted associations between ``input" and ``result". 
+\end{itemize}
+
+\centering
+\includegraphics[scale=0.3]{neuron.png}
+        
+\end{frame}
+
+
+%% ====== Slide ======
+\begin{frame}[t]{Neural Networks}
+
+\begin{itemize}
+  \item For classification tasks, NNs utilize an activation function, for example a logistic function:
+	$$f(x) = \frac{L}{1 + e^{-k(x - x_0)}}$$
+  
+\end{itemize}
+
+\centering
+\includegraphics[scale=0.17]{logistic.png}
+        
+\end{frame}
+
+\begin{frame}{Neural network}
+
+\vspace{-2cm}
+
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+
+{\centering \includegraphics[width=\maxwidth]{figure/nnw1-1} 
+
+}
+
+
+\end{knitrout}
+
+\end{frame}
+
+%% ====== Slide ======
+%\begin{frame}[t]{Neural Networks}
+
+%\centering
+%\includegraphics[scale=0.5]{nn_learn.png}
+        
+%\end{frame}
+
+
+
+
+%% ====== Slide ======
+\begin{frame}[t]{Cross Validation}
+
+\begin{itemize}
+  \item A resampling procedure for model validation.
+  \item Assessing how the results of a statistical analysis will generalize to an independent data set.
+  \item Estimates how accurately a predictive model will perform in practice.
+  \item For the Iris dataset, we specifically perform the k-fold cross validation.
+  
+\end{itemize}
+        
+\end{frame}
+
+%% ====== Slide ======
+\begin{frame}[t]{k-fold Cross Validation}
+
+\begin{itemize}
+  \item Shuffle the dataset randomly.
+  \item Split the dataset into k groups.
+  \item For each unique group:
+  \begin{itemize}
+    \item Take the group as a hold out or test data set.
+    \item Take the remaining groups as a training data set.
+    \item Fit a model on the training set and evaluate it on the test set.
+    \item Retain the evaluation score and discard the model.
+  \end{itemize}
+  \item Summarize the skill of the model using the sample of model evaluation scores.
+  \item Note: The k value must be chosen carefully for the data sample.
+\end{itemize}
+        
+\end{frame}
+
+%% ====== Slide ======
+\begin{frame}[t]{k-fold Cross Validation}
+
+\begin{itemize}
+  \item Performed using the function \texttt{train()} included in the R package \texttt{caret}.
+  
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(caret)}
+\end{alltt}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Lade nötiges Paket: ggplot2}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Lade nötiges Paket: lattice}}\begin{alltt}
+\hlstd{tc} \hlkwb{<-} \hlkwd{trainControl}\hlstd{(}\hlkwc{method} \hlstd{=} \hlstr{"cv"}\hlstd{,} \hlkwc{number} \hlstd{=} \hlnum{10}\hlstd{)}
+
+\hlstd{fit} \hlkwb{<-} \hlkwd{train}\hlstd{(Species} \hlopt{~}\hlstd{.,}\hlkwc{data} \hlstd{=} \hlkwd{data.frame}\hlstd{(iris.training,}\hlstr{"Species"}\hlstd{=}
+              \hlstd{iris.trainingtarget),} \hlkwc{method} \hlstd{=} \hlstr{"nb"}\hlstd{,}\hlkwc{trControl} \hlstd{= tc,} \hlkwc{metric} \hlstd{=} \hlstr{"Accuracy"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+  \item k=10 is used.
+  \item Qualitative aspect is measured by Cohen's kappa score and the accuracy measure.  
+  \item Measures the agreement between two raters who each classify N items into C mutually exclusive categories:
+  
+  $$\kappa = \frac{p_o - p_e}{1 - p_e}$$
+\end{itemize}
+        
+\end{frame}
+
+
+
+
+
+%% ====== Slide ======
+\begin{frame}[fragile]{k-fold Cross Validation: Naive Bayes}
+
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(caret)}
+\hlkwd{set.seed}\hlstd{(}\hlnum{1}\hlstd{)}
+\hlstd{tc} \hlkwb{<-} \hlkwd{trainControl}\hlstd{(}\hlkwc{method} \hlstd{=} \hlstr{"cv"}\hlstd{,} \hlkwc{number} \hlstd{=} \hlnum{10}\hlstd{)}
+\hlstd{fit} \hlkwb{<-} \hlkwd{train}\hlstd{(Species} \hlopt{~}\hlstd{.,}\hlkwc{data} \hlstd{=} \hlkwd{data.frame}\hlstd{(iris.training,}\hlstr{"Species"}\hlstd{=}
+  \hlstd{iris.trainingtarget),}\hlkwc{method} \hlstd{=} \hlstr{"nb"}\hlstd{,}\hlkwc{trControl} \hlstd{= tc,} \hlkwc{metric} \hlstd{=} \hlstr{"Accuracy"}\hlstd{)}
+\hlstd{fit}\hlopt{$}\hlstd{results}
+\end{alltt}
+\begin{verbatim}
+##   usekernel fL adjust  Accuracy     Kappa AccuracySD    KappaSD
+## 1     FALSE  0      1 0.9607071 0.9403631  0.0510286 0.07750075
+## 2      TRUE  0      1 0.9507071 0.9252115  0.0522565 0.07933520
+\end{verbatim}
+\begin{alltt}
+\hlstd{pred} \hlkwb{<-} \hlkwd{predict}\hlstd{(fit, iris.test)}
+\hlstd{result}\hlkwb{<-}\hlkwd{confusionMatrix}\hlstd{(iris.testtarget, pred)}
+\hlkwd{sum}\hlstd{(}\hlkwd{diag}\hlstd{(result}\hlopt{$}\hlstd{table))}\hlopt{/}\hlkwd{sum}\hlstd{(result}\hlopt{$}\hlstd{table)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.9574468
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+        
+\end{frame}
+
+%% ====== Slide ======
+
+\begin{frame}[fragile]{k-fold Cross Validation: k-nearest Neighbours}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{set.seed}\hlstd{(}\hlnum{1}\hlstd{)}
+\hlstd{knn_fit} \hlkwb{<-} \hlkwd{train}\hlstd{(Species} \hlopt{~}\hlstd{.,}\hlkwc{data} \hlstd{=} \hlkwd{data.frame}\hlstd{(iris.training,}\hlstr{"Species"}\hlstd{=}
+  \hlstd{iris.trainingtarget),} \hlkwc{method} \hlstd{=} \hlstr{"knn"}\hlstd{,} \hlkwc{trControl}\hlstd{=tc,} \hlkwc{metric} \hlstd{=} \hlstr{"Accuracy"}\hlstd{)}
+\hlstd{knn_fit}\hlopt{$}\hlstd{results}
+\end{alltt}
+\begin{verbatim}
+##   k  Accuracy     Kappa AccuracySD    KappaSD
+## 1 5 0.9609091 0.9403883 0.05053433 0.07705315
+## 2 7 0.9609091 0.9403883 0.05053433 0.07705315
+## 3 9 0.9800000 0.9696970 0.04216370 0.06388440
+\end{verbatim}
+\begin{alltt}
+\hlstd{pred} \hlkwb{<-} \hlkwd{predict}\hlstd{(knn_fit,iris.training)}
+\hlstd{result}\hlkwb{<-}\hlkwd{confusionMatrix}\hlstd{(iris.trainingtarget, pred)}
+\hlkwd{sum}\hlstd{(}\hlkwd{diag}\hlstd{(result}\hlopt{$}\hlstd{table))}\hlopt{/}\hlkwd{sum}\hlstd{(result}\hlopt{$}\hlstd{table)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.9805825
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+
+%% ====== Slide ======
+\begin{frame}[fragile]{k-fold Cross Validation: Neural Network}
+
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{set.seed}\hlstd{(}\hlnum{1}\hlstd{)}
+\hlstd{nnet_fit} \hlkwb{<-} \hlkwd{train}\hlstd{(Species} \hlopt{~}\hlstd{.,}\hlkwc{data} \hlstd{=} \hlkwd{data.frame}\hlstd{(iris.training,}\hlstr{"Species"}\hlstd{=}
+  \hlstd{iris.trainingtarget),} \hlkwc{method} \hlstd{=} \hlstr{"nnet"}\hlstd{,} \hlkwc{trControl}\hlstd{=tc,} \hlkwc{metric} \hlstd{=} \hlstr{"Accuracy"}\hlstd{,}\hlkwc{trace} \hlstd{=} \hlnum{FALSE}\hlstd{)}
+\hlstd{nnet_fit}\hlopt{$}\hlstd{results}
+\end{alltt}
+\begin{verbatim}
+##   size decay  Accuracy     Kappa AccuracySD    KappaSD
+## 1    1 0e+00 0.8212121 0.7208569 0.13431685 0.21313940
+## 2    1 1e-04 0.7517172 0.5951669 0.26779376 0.44643182
+## 3    1 1e-01 0.9497980 0.9223883 0.07103029 0.10906072
+## 4    3 0e+00 0.9536364 0.9280673 0.08891242 0.13915422
+## 5    3 1e-04 0.9618182 0.9419596 0.04938557 0.07510644
+## 6    3 1e-01 0.9800000 0.9694639 0.04216370 0.06437816
+## 7    5 0e+00 0.9309091 0.8930024 0.09459206 0.14926891
+## 8    5 1e-04 0.9618182 0.9425365 0.04938557 0.07436975
+## 9    5 1e-01 0.9800000 0.9694639 0.04216370 0.06437816
+\end{verbatim}
+\begin{alltt}
+\hlstd{pred} \hlkwb{<-} \hlkwd{predict}\hlstd{(nnet_fit,iris.training); result}\hlkwb{<-}\hlkwd{confusionMatrix}\hlstd{(iris.trainingtarget, pred)}
+\hlkwd{sum}\hlstd{(}\hlkwd{diag}\hlstd{(result}\hlopt{$}\hlstd{table))}\hlopt{/}\hlkwd{sum}\hlstd{(result}\hlopt{$}\hlstd{table)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.9902913
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+        
+\end{frame}
+
+%% ====== Slide ======
+\begin{frame}[t]{Summary}
+
+\begin{center}
+\begin{tabular}{ c c c }
+ \textbf{Method} & \textbf{Accuracy Score}  & \textbf{Accuracy Test} \\
+ Naive Bayes & 0.9607 &  0.9574 \\
+ 9-NN & 0.9800 & 0.9806 \\
+ Neural Network & 0.9800  & 0.9903  
+\end{tabular}
+
+\begin{itemize}
+  \item Among the methods discussed, kNN with k = 9 offers the highest rate of accuracy.
+  \item There is no ``one method fits all" approach when undertaking classification tasks.
+\end{itemize}
+\end{center}
+        
+\end{frame}
+
+
+
+%% ====== End Document ====== %%
+
+\begin{frame}{References}
+\begin{thebibliography}{10}
+\setbeamertemplate{bibliography item}[text]
+\bibitem{Md}
+Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, "An Introduction to Statistical Learning : with Applications in R", Springer, 2013.
+\bibitem{Md}
+McCulloch, Warren, Walter Pitts, "A Logical Calculus of Ideas Immanent in Nervous Activity", Bulletin of Mathematical Biophysics. 5 (4): 115–133, 1943.
+
+\end{thebibliography}
+
+\end{frame}
 
 %% ====== End Document ====== %%
 \end{document}

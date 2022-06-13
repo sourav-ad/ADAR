@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.8)  10 JUN 2022 15:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.8)  13 JUN 2022 11:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1504,65 +1504,65 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ) (./slides.nav)
-LaTeX Font Info:    Try loading font information for T1+qcs on input line 169.
+LaTeX Font Info:    Try loading font information for T1+qcs on input line 170.
 
 (/usr/share/texmf/tex/latex/tex-gyre/t1qcs.fd
 File: t1qcs.fd 2009/09/25 v1.2 font definition file for T1/qcs
 )
 LaTeX Font Info:    Font shape `T1/qcs/bx/n' in size <21> not available
-(Font)              Font shape `T1/qcs/b/n' tried instead on input line 169.
+(Font)              Font shape `T1/qcs/b/n' tried instead on input line 170.
 LaTeX Font Info:    Font shape `T1/qcs/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/qcs/b/n' tried instead on input line 169.
+(Font)              Font shape `T1/qcs/b/n' tried instead on input line 170.
 
-Overfull \vbox (2.45638pt too high) detected at line 169
+Overfull \vbox (2.45638pt too high) detected at line 170
  []
 
 <Graphics/Forum.jpg, id=25, 1505.625pt x 941.5175pt>
 File: Graphics/Forum.jpg Graphic file (type jpg)
 <use Graphics/Forum.jpg>
-Package pdftex.def Info: Graphics/Forum.jpg  used on input line 169.
+Package pdftex.def Info: Graphics/Forum.jpg  used on input line 170.
 (pdftex.def)             Requested size: 455.25195pt x 284.52618pt.
 <Graphics/WU_Logo.png, id=26, 124.42485pt x 65.64525pt>
 File: Graphics/WU_Logo.png Graphic file (type png)
 <use Graphics/WU_Logo.png>
-Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 169.
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 170.
 (pdftex.def)             Requested size: 99.58464pt x 52.54028pt.
 <Graphics/Triple-Accreditation-negative.png, id=28, 602.25pt x 97.36375pt>
 File: Graphics/Triple-Accreditation-negative.png Graphic file (type png)
 <use Graphics/Triple-Accreditation-negative.png>
 Package pdftex.def Info: Graphics/Triple-Accreditation-negative.png  used on in
-put line 169.
+put line 170.
 (pdftex.def)             Requested size: 91.04872pt x 14.71832pt.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Graphics/Forum.jpg> <./G
 raphics/WU_Logo.png> <./Graphics/Triple-Accreditation-negative.png>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 207.
+LaTeX Font Info:    Try loading font information for U+msa on input line 208.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 207.
+LaTeX Font Info:    Try loading font information for U+msb on input line 208.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/qcs/bx/n' in size <14> not available
-(Font)              Font shape `T1/qcs/b/n' tried instead on input line 207.
+(Font)              Font shape `T1/qcs/b/n' tried instead on input line 208.
 File: Graphics/WU_Logo.png Graphic file (type png)
 <use Graphics/WU_Logo.png>
-Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 207.
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 208.
 (pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
 <Graphics/Triple-Accreditation.png, id=41, 602.25pt x 97.36375pt>
 File: Graphics/Triple-Accreditation.png Graphic file (type png)
 <use Graphics/Triple-Accreditation.png>
 Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
-207.
+208.
 (pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
  [2
 
  <./Graphics/Triple-Accreditation.png>]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 221.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 222.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -1570,16 +1570,16 @@ File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 <iris.png, id=52, 1279.78125pt x 478.78876pt>
 File: iris.png Graphic file (type png)
 <use iris.png>
-Package pdftex.def Info: iris.png  used on input line 221.
+Package pdftex.def Info: iris.png  used on input line 222.
 (pdftex.def)             Requested size: 378.42044pt x 141.5702pt.
 File: Graphics/WU_Logo.png Graphic file (type png)
 <use Graphics/WU_Logo.png>
-Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 221.
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 222.
 (pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
 File: Graphics/Triple-Accreditation.png Graphic file (type png)
 <use Graphics/Triple-Accreditation.png>
 Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
-221.
+222.
 (pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
 
 [3
@@ -1588,106 +1588,300 @@ Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line
 <figure/scatterplot-1.pdf, id=61, 397.485pt x 289.08pt>
 File: figure/scatterplot-1.pdf Graphic file (type pdf)
 <use figure/scatterplot-1.pdf>
-Package pdftex.def Info: figure/scatterplot-1.pdf  used on input line 235.
+Package pdftex.def Info: figure/scatterplot-1.pdf  used on input line 236.
 (pdftex.def)             Requested size: 397.48402pt x 289.0881pt.
 LaTeX Font Info:    Font shape `T1/qcs/bx/n' in size <10> not available
-(Font)              Font shape `T1/qcs/b/n' tried instead on input line 235.
+(Font)              Font shape `T1/qcs/b/n' tried instead on input line 236.
 
-Overfull \vbox (19.67136pt too high) detected at line 235
+Overfull \vbox (19.67136pt too high) detected at line 236
  []
 
 File: Graphics/WU_Logo.png Graphic file (type png)
 <use Graphics/WU_Logo.png>
-Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 235.
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 236.
 (pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
 File: Graphics/Triple-Accreditation.png Graphic file (type png)
 <use Graphics/Triple-Accreditation.png>
 Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
-235.
+236.
 (pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
 [4
 
  <./figure/scatterplot-1.pdf>]
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 252.
+<figure/plot-1.pdf, id=72, 289.08pt x 230.8625pt>
+File: figure/plot-1.pdf Graphic file (type pdf)
+<use figure/plot-1.pdf>
+Package pdftex.def Info: figure/plot-1.pdf  used on input line 262.
+(pdftex.def)             Requested size: 289.07928pt x 230.87248pt.
 
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 252.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 252.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 252.
-
-File: Graphics/WU_Logo.png Graphic file (type png)
-<use Graphics/WU_Logo.png>
-Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 252.
-(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
-File: Graphics/Triple-Accreditation.png Graphic file (type png)
-<use Graphics/Triple-Accreditation.png>
-Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
-252.
-(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
-[5
-
-]
-<figure/nb1-1.pdf, id=82, 289.08pt x 289.08pt>
-File: figure/nb1-1.pdf Graphic file (type pdf)
-<use figure/nb1-1.pdf>
-Package pdftex.def Info: figure/nb1-1.pdf  used on input line 271.
-(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
-
-Overfull \vbox (16.83032pt too high) detected at line 271
+Overfull \vbox (8.42938pt too high) detected at line 262
  []
 
 File: Graphics/WU_Logo.png Graphic file (type png)
 <use Graphics/WU_Logo.png>
-Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 271.
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 262.
 (pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
 File: Graphics/Triple-Accreditation.png Graphic file (type png)
 <use Graphics/Triple-Accreditation.png>
 Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
-271.
+262.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+[5
+
+ <./figure/plot-1.pdf>]
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 279.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 279.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
+(Font)              size <5> substituted on input line 279.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 279.
+
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 279.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+279.
 (pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
 [6
+
+]
+<figure/nb1-1.pdf, id=93, 289.08pt x 289.08pt>
+File: figure/nb1-1.pdf Graphic file (type pdf)
+<use figure/nb1-1.pdf>
+Package pdftex.def Info: figure/nb1-1.pdf  used on input line 295.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+
+Overfull \vbox (16.83032pt too high) detected at line 295
+ []
+
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 295.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+295.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+[7
 
  <./figure/nb1-1.pdf>]
 File: Graphics/WU_Logo.png Graphic file (type png)
 <use Graphics/WU_Logo.png>
-Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 286.
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 310.
 (pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
 File: Graphics/Triple-Accreditation.png Graphic file (type png)
 <use Graphics/Triple-Accreditation.png>
 Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
-286.
+310.
 (pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
- [7
+ [8
 
 ]
-<figure/knn1-1.pdf, id=99, 289.08pt x 289.08pt>
+<figure/knn1-1.pdf, id=110, 289.08pt x 289.08pt>
 File: figure/knn1-1.pdf Graphic file (type pdf)
 <use figure/knn1-1.pdf>
-Package pdftex.def Info: figure/knn1-1.pdf  used on input line 299.
+Package pdftex.def Info: figure/knn1-1.pdf  used on input line 323.
 (pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
 
-Overfull \vbox (16.83032pt too high) detected at line 299
+Overfull \vbox (16.83032pt too high) detected at line 323
  []
 
 File: Graphics/WU_Logo.png Graphic file (type png)
 <use Graphics/WU_Logo.png>
-Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 299.
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 323.
 (pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
 File: Graphics/Triple-Accreditation.png Graphic file (type png)
 <use Graphics/Triple-Accreditation.png>
 Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
-299.
+323.
 (pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
-[8
+[9
 
  <./figure/knn1-1.pdf>]
+<neuron.png, id=121, 916.42375pt x 462.72874pt>
+File: neuron.png Graphic file (type png)
+<use neuron.png>
+Package pdftex.def Info: neuron.png  used on input line 338.
+(pdftex.def)             Requested size: 274.92924pt x 138.81969pt.
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 338.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+338.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+ [10
+
+ <./neuron.png (PNG copy)>]
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 353.
+
+<logistic.png, id=127, 1284.8pt x 856.19875pt>
+File: logistic.png Graphic file (type png)
+<use logistic.png>
+Package pdftex.def Info: logistic.png  used on input line 353.
+(pdftex.def)             Requested size: 218.4131pt x 145.55185pt.
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 353.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+353.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+[11
+
+ <./logistic.png>]
+<figure/nnw1-1.pdf, id=138, 289.08pt x 289.08pt>
+File: figure/nnw1-1.pdf Graphic file (type pdf)
+<use figure/nnw1-1.pdf>
+Package pdftex.def Info: figure/nnw1-1.pdf  used on input line 370.
+(pdftex.def)             Requested size: 289.07928pt x 289.09251pt.
+
+Overfull \vbox (16.83032pt too high) detected at line 370
+ []
+
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 370.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+370.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+[12
+
+ <./figure/nnw1-1.pdf>]
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 394.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+394.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+ [13
+
+]
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 413.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+413.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+ [14
+
+]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <8> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 446.
+
+Overfull \hbox (16.31284pt too wide) in paragraph at lines 446--446
+[][]\T1/cmtt/m/n/8 fit[] []<-[] []train[][](Species[] [][] [].,[][]data[] []=[]
+ []data.frame[][](iris.training,[][]"Species"[][]=[] []iris.trainingtarget),[] 
+[]method[]
+ []
+
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 446.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+446.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+[15
+
+]
+\openout4 = `slides.vrb'.
+
+ (./slides.vrb)
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 482.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+482.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+ [16
+
+]
+\openout4 = `slides.vrb'.
+
+ (./slides.vrb)
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 511.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+511.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+ [17
+
+]
+\openout4 = `slides.vrb'.
+
+ (./slides.vrb)
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 547.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+547.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+ [18
+
+]
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 566.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+566.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+ [19
+
+]
+File: Graphics/WU_Logo.png Graphic file (type png)
+<use Graphics/WU_Logo.png>
+Package pdftex.def Info: Graphics/WU_Logo.png  used on input line 582.
+(pdftex.def)             Requested size: 56.9055pt x 30.02287pt.
+File: Graphics/Triple-Accreditation.png Graphic file (type png)
+<use Graphics/Triple-Accreditation.png>
+Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line 
+582.
+(pdftex.def)             Requested size: 65.44142pt x 10.5793pt.
+ [20
+
+]
 \tf@nav=\write6
 \openout6 = `slides.nav'.
 
@@ -1697,11 +1891,12 @@ Package pdftex.def Info: Graphics/Triple-Accreditation.png  used on input line
 \tf@snm=\write8
 \openout8 = `slides.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 303.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 303.
- (./slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 303.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 303.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 585.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 585.
+
+(./slides.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 585.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 585.
 Package rerunfilecheck Info: File `slides.out' has not changed.
 (rerunfilecheck)             Checksum: 6B4D493B11290B3B5B1D20BCC9A0E962;131.
 
@@ -1711,33 +1906,39 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 31509 strings out of 494847
- 745034 string characters out of 6179081
- 941811 words of memory out of 5000000
- 34146 multiletter control sequences out of 15000+600000
- 36880 words of font info for 73 fonts, out of 8000000 for 9000
+ 31622 strings out of 494847
+ 746867 string characters out of 6179081
+ 943811 words of memory out of 5000000
+ 34219 multiletter control sequences out of 15000+600000
+ 38439 words of font info for 78 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  69i,20n,119p,859b,814s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.60
-0pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1095.
-600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx109
-5.600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1
+ </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit0800.60
+0pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0800.
+600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt109
+5.600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1
 000.600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecs
-s1095.600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/e
-css0600.600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec
-/ecsi0800.600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/
-ec/ecss0800.600pk>{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}</usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/symbols/msam7.pfb></usr/share/texmf/fonts/type1/public/tex-gyr
-e/qcsb.pfb>
-Output written on slides.pdf (8 pages, 1833812 bytes).
+i1095.600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/e
+csx1095.600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec
+/ecss1000.600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/
+ec/ecss1095.600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknappe
+n/ec/ecss0600.600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jknap
+pen/ec/ecsi0800.600pk> </home/vkoeck/.texlive2017/texmf-var/fonts/pk/ljfour/jkn
+appen/ec/ecss0800.600pk>{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}</u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols
+/msam7.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qcsb.pfb>
+Output written on slides.pdf (20 pages, 2435389 bytes).
 PDF statistics:
- 375 PDF objects out of 1000 (max. 8388607)
- 127 compressed objects within 2 object streams
- 20 named destinations out of 1000 (max. 500000)
- 107 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 603 PDF objects out of 1000 (max. 8388607)
+ 216 compressed objects within 3 object streams
+ 45 named destinations out of 1000 (max. 500000)
+ 127 words of extra memory for PDF output out of 10000 (max. 10000000)
 
